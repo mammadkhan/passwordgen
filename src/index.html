@@ -2,8 +2,34 @@
 <html>
     <head>
         <title>Password Generator</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
     </head>
     <body>
-        
+        <h1 class="heading">Password Generator</h1>
+        <div class="password container">gp#5L1991nNaUceY#N(3<span class="password-copied">COPIED</span><button class="password-copy"></button></div>
+        <div class="features container">
+            <div class="character-length">
+                <h2 class="character-length-heading">Character length <span class="character-length-digit">1</span></h2>
+                <input type="range" min="1" max="20">
+            </div>
+            <div class="password-features">
+                <label for="uppercase"><input type="checkbox" id="uppercase">Include Uppercase Letters</label>
+                <label for="lowecase"><input type="checkbox" id="lowecase">Include Lowercase Letters</label>
+                <label for="numbers"><input type="checkbox" id="numbers">Include Numbers</label>
+                <label for="symbols"><input type="checkbox" id="symbols">Include Symbols</label>
+            </div>
+            <div class="password-strength">
+                <h2>Strength</h2>
+                <div class="password-strength-right">
+                    <strong>WEAK</strong>
+                    <div class="password-strength-indicator">
+                        <div class="indicator-level"></div>
+                        <div class="indicator-level"></div>
+                        <div class="indicator-level"></div>
+                        <div class="indicator-level"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
