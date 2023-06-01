@@ -5,10 +5,11 @@
   --background: #121118;
   --container: #23222a;
   --primary: #a3ffae;
+  --placeholder: #54535a;
   --strength: #191820;
+  --strength-title: #807c92;
   --strength-tooweak: #f74b4b;
   --strength-weak: #fb7a56;
-  --strength-medium: #f8cb63;
   --strength-medium: #f8cb63;
   --strength-strong: #a3ffae;
 }

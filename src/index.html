@@ -2,24 +2,32 @@
 <html>
     <head>
         <title>Password Generator</title>
+        <script src="./app.js" type="module" defer></script>
         <link rel="stylesheet" type="text/css" href="./style.css">
     </head>
     <body>
         <h1 class="heading">Password Generator</h1>
-        <div class="password container">gp#5L1991nNaUceY#N(3<span class="password-copied">COPIED</span><button class="password-copy"></button></div>
+        <div class="password container">
+            <span class="placeholder">ciJy2</span>
+            <span class="generated-password"></span> 
+            <div class="password-right">
+                <span class="password-copied"></span>
+                <button class="password-copy"></button>
+            </div>
+        </div>
         <div class="features container">
             <div class="character-length">
-                <h2 class="character-length-heading">Character length <span class="character-length-digit">1</span></h2>
-                <input type="range" min="1" max="20">
+                <h2 class="character-length-heading">Character Length <span class="character-length-digit">5</span></h2>
+                <input class="slider" type="range" min="1" max="20" value="5">
             </div>
             <div class="password-features">
-                <label for="uppercase"><input type="checkbox" id="uppercase">Include Uppercase Letters</label>
-                <label for="lowecase"><input type="checkbox" id="lowecase">Include Lowercase Letters</label>
-                <label for="numbers"><input type="checkbox" id="numbers">Include Numbers</label>
-                <label for="symbols"><input type="checkbox" id="symbols">Include Symbols</label>
+                <label for="uppercase"><input type="checkbox" class="feature" id="uppercase">Include Uppercase Letters</label>
+                <label for="lowercase"><input type="checkbox" class="feature" id="lowercase">Include Lowercase Letters</label>
+                <label for="numbers"><input type="checkbox" class="feature" id="numbers">Include Numbers</label>
+                <label for="symbols"><input type="checkbox" class="feature" id="symbols">Include Symbols</label>
             </div>
             <div class="password-strength">
-                <h2>Strength</h2>
+                <h2>STRENGTH</h2>
                 <div class="password-strength-right">
                     <strong>WEAK</strong>
                     <div class="password-strength-indicator">
@@ -30,6 +38,7 @@
                     </div>
                 </div>
             </div>
+            <button class="generate">GENERATE<svg width="12" fill="currentColor" height="12" xmlns="http://www.w3.org/2000/svg"><path d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"/></svg></button>
         </div>
     </body>
 </html>
