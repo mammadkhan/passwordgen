@@ -2,7 +2,8 @@
 <html>
     <head>
         <title>Password Generator</title>
-        <script src="./app.js" type="module" defer></script>
+        <script type="text/javascript" src="./app.js" type="module" defer></script>
+        <script type="text/javascript" src="./zxcvbn.js"></script>
         <link rel="stylesheet" type="text/css" href="./style.css">
     </head>
     <body>
@@ -29,7 +30,7 @@
             <div class="password-strength">
                 <h2>STRENGTH</h2>
                 <div class="password-strength-right">
-                    <strong>WEAK</strong>
+                    <strong class="password-strength-comment"></strong>
                     <div class="password-strength-indicator">
                         <div class="indicator-level"></div>
                         <div class="indicator-level"></div>

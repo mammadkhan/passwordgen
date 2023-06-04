@@ -5,9 +5,11 @@ const placeholder = document.querySelector(".placeholder");
 const generatedPassword = document.querySelector(".generated-password");
 const passwordCopiedMessage = document.querySelector(".password-copied");
 const passwordCopy = document.querySelector(".password-copy");
-
 const features = document.querySelectorAll(".feature");
 const generate = document.querySelector(".generate");
+
+const passwordStrengthComment = document.querySelector(".password-strength-comment");
+const passwordStrengthIndicators = document.querySelectorAll(".indicator-level");
 
 const passwordFeatures = {
   length: 5,
@@ -18,9 +20,16 @@ const passwordFeatures = {
 };
 
 passwordCopy.addEventListener("click", () => {
+  if (passwordCopiedMessage.textContent || !generatedPassword.textContent) return;
   navigator.clipboard.writeText(generatedPassword.textContent);
   passwordCopiedMessage.textContent = "COPIED";
-  passwordCopiedMessage.style.opacity = "0";
+  setTimeout(() => {
+    passwordCopiedMessage.style.opacity = "0";
+    setTimeout(() => {
+      passwordCopiedMessage.textContent = "";
+      passwordCopiedMessage.style.opacity = "1";
+    }, 800);
+  }, 800);
 });
 
 slider.addEventListener("input", (e) => {
@@ -41,17 +50,19 @@ for (const feature of features) {
 
 generate.addEventListener("click", () => {
   if (Object.values(passwordFeatures).includes(true)) {
+    for (const indicator of passwordStrengthIndicators) {
+      indicator.style.backgroundColor = "transparent";
+      indicator.style.border = "2px solid white";
+    }
+    const generated = genPass();
     placeholder.remove();
-    generatedPassword.textContent = genPass();
+    generatedPassword.textContent = generated.pass;
+    passwordStrengthComment.textContent = generated.strength;
   }
 });
 
 function genPass() {
   const specialChars = "£$&()*+[]@#^-_!?";
-  // 4 - Symbols
-  // 3 - Numbers
-  // 2 - Lowercase
-  // 1 - Uppercase
 
   const onFeatures = Object.keys(passwordFeatures).filter(
     (feature) => passwordFeatures[feature] === true
@@ -71,5 +82,38 @@ function genPass() {
       password[i] = specialChars[Math.ceil(Math.random() * specialChars.length - 1)];
     }
   }
-  return password.join("");
+
+  //Pass Strength
+
+  let passwordStrength = "";
+  const strengthPoint = zxcvbn(password.join("")).score;
+
+  if (strengthPoint <= 1) {
+    passwordStrength = "TOO WEAK!";
+  } else if (strengthPoint === 2) {
+    passwordStrength = "WEAK";
+  } else if (strengthPoint === 3) {
+    passwordStrength = "MEDIUM";
+  } else if (strengthPoint === 4) {
+    passwordStrength = "STRONG";
+  }
+
+  if (strengthPoint <= 1) {
+    passwordStrengthIndicators[0].style.border = "none";
+    passwordStrengthIndicators[0].style.backgroundColor = "var(--strength-tooweak)";
+  } else {
+    for (let i = 0; i < strengthPoint; i++) {
+      passwordStrengthIndicators[i].style.border = "none";
+      passwordStrengthIndicators[i].style.backgroundColor =
+        strengthPoint === 2
+          ? "var(--strength-weak)"
+          : strengthPoint === 3
+          ? "var(--strength-medium)"
+          : strengthPoint === 4
+          ? "var(--strength-strong)"
+          : null;
+    }
+  }
+
+  return { pass: password.join(""), strength: passwordStrength };
 }
