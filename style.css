@@ -1,7 +1,7 @@
 @import "./colors.css";
 @font-face {
   font-family: "JetBrainsMono";
-  src: url("../assets/fonts/JetBrainsMono-VariableFont_wght.ttf");
+  src: url("./assets/fonts/JetBrainsMono-VariableFont_wght.ttf");
 }
 
 * {
@@ -68,7 +68,7 @@ body {
 
 .password-copy {
   all: unset;
-  background-image: url("../assets/images/icon-copy.svg");
+  background-image: url("./assets/images/icon-copy.svg");
   background-repeat: no-repeat;
   background-position: center center;
   width: 2rem;
@@ -160,7 +160,7 @@ input[type="checkbox"]:hover {
 input[type="checkbox"]:checked {
   background-color: var(--primary);
   border: none;
-  background-image: url("../assets/images/icon-check.svg");
+  background-image: url("./assets/images/icon-check.svg");
   background-position: center center;
   background-repeat: no-repeat;
 }
