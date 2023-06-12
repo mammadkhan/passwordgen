@@ -124,9 +124,15 @@ body {
   border-radius: 50%;
   background-color: var(--range);
   cursor: pointer;
+  border: none;
 }
 
 .slider::-webkit-slider-thumb:hover {
+  background-color: var(--container);
+  border: 2px solid var(--primary);
+}
+
+.slider::-moz-range-thumb:hover {
   background-color: var(--container);
   border: 2px solid var(--primary);
 }
